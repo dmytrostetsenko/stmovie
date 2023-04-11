@@ -10,7 +10,7 @@ const TMDBServices = () => {
 				api_key: process.env.REACT_APP_API_KEY,
 			},
 		});
-		console.log(results);
+		return results;
 	};
 
 	return { fetchMovie };

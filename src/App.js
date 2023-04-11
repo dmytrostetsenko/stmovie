@@ -1,14 +1,18 @@
-import { useEffect } from "react";
-import TMDBServices from "./services/TMDBServices";
+import { Route, Routes } from "react-router-dom";
+import HomePage from "./pages/HomePage";
+import NotFound from "./pages/NotFound";
 
 function App() {
-	const { fetchMovie } = TMDBServices();
-
-	useEffect(() => {
-		fetchMovie();
-	}, []);
-
-	return <div className="App"></div>;
+	return (
+		<div className="App">
+			<main>
+				<Routes>
+					<Route path="/" element={<HomePage />} />
+					<Route path="*" element={<NotFound />} />
+				</Routes>
+			</main>
+		</div>
+	);
 }
 
 export default App;
