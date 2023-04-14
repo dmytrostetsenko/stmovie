@@ -44,7 +44,12 @@ const MovieCard = ({ movie }) => {
 						justifyContent: "space-between",
 					}}
 				>
-					<Typography variant="h6">{title}</Typography>
+					<Typography
+						variant="h6"
+						sx={{ fontSize: "15px", fontWeight: "700" }}
+					>
+						{title}
+					</Typography>
 					<Box
 						sx={{
 							display: "flex",
@@ -59,7 +64,7 @@ const MovieCard = ({ movie }) => {
 							readOnly
 						/>
 						<Typography variant="span" sx={{ ml: 2 }}>
-							{vote_average / 2}
+							TMBD: {vote_average / 2}
 						</Typography>
 					</Box>
 				</CardContent>

@@ -10,13 +10,25 @@ const TMDBServices = () => {
 			} = await axios.get(
 				`${_baseUrl}/discover/movie${_key}&page=${page}`
 			);
-			return results;
+			return results.slice(0, 10);
+		} catch (error) {
+			throw new Error(error);
+		}
+	};
+	const searchByName = async (name) => {
+		try {
+			const {
+				data: { results },
+			} = await axios.get(
+				`${_baseUrl}/search/movie${_key}&query=${name}`
+			);
+			return results.slice(0, 10);
 		} catch (error) {
 			throw new Error(error);
 		}
 	};
 
-	return { fetchMovie };
+	return { fetchMovie, searchByName };
 };
 
 export default TMDBServices;
