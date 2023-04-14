@@ -3,7 +3,7 @@ import axios from "axios";
 const TMDBServices = () => {
 	const _baseUrl = "https://api.themoviedb.org/3";
 	const _key = `?api_key=${process.env.REACT_APP_API_KEY}`;
-	const fetchMovie = async (page) => {
+	const fetchMovieList = async (page) => {
 		try {
 			const {
 				data: { results },
@@ -11,6 +11,14 @@ const TMDBServices = () => {
 				`${_baseUrl}/discover/movie${_key}&page=${page}`
 			);
 			return results.slice(0, 10);
+		} catch (error) {
+			throw new Error(error);
+		}
+	};
+	const fetchMovie = async (id) => {
+		try {
+			const { data } = await axios.get(`${_baseUrl}/movie/${id}${_key}`);
+			return data;
 		} catch (error) {
 			throw new Error(error);
 		}
@@ -28,7 +36,7 @@ const TMDBServices = () => {
 		}
 	};
 
-	return { fetchMovie, searchByName };
+	return { fetchMovieList, searchByName, fetchMovie };
 };
 
 export default TMDBServices;

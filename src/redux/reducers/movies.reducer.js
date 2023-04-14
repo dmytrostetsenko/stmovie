@@ -1,6 +1,6 @@
 const initialState = {
 	movieList: [],
-	selectedMovie: null,
+	selectedMovie: {},
 	favoriteList: [],
 	searchMovie: [],
 };
@@ -12,9 +12,10 @@ const moviesReducer = (state = initialState, action) => {
 				...state,
 				movieList: [...state.movieList, ...action.payload],
 			};
-		case "SELECT_MOVIES":
+		case "SELECT_MOVIE":
 			return {
 				...state,
+				movieList: [],
 				selectedMovie: action.payload,
 			};
 		case "SEARCH_MOVIES":

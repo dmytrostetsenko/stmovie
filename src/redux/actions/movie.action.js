@@ -1,13 +1,22 @@
 import TMDBServices from "../../services/TMDBServices";
-const { fetchMovie, searchByName } = TMDBServices();
+const { fetchMovieList, searchByName, fetchMovie } = TMDBServices();
 
 export const fetchMovieListThunk = (page) => (dispatch) => {
-	fetchMovie(page).then((res) =>
+	fetchMovieList(page).then((res) =>
 		dispatch({
 			type: "FETCH_MOVIES",
 			payload: res,
 		})
 	);
+};
+
+export const fetchMovieThunk = (id) => (dispatch) => {
+	fetchMovie(id).then((res) => {
+		dispatch({
+			type: "SELECT_MOVIE",
+			payload: res,
+		});
+	});
 };
 
 export const searchMovieThunk = (name) => (dispatch) => {
@@ -16,12 +25,5 @@ export const searchMovieThunk = (name) => (dispatch) => {
 			type: "SEARCH_MOVIES",
 			payload: res,
 		});
-	});
-};
-
-export const selectMovie = (movie) => (dispatch) => {
-	dispatch({
-		type: "SELECT_MOVIE",
-		payload: movie,
 	});
 };
