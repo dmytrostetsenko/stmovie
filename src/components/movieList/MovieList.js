@@ -1,23 +1,19 @@
 import { useEffect, useState } from "react";
-import TMDBServices from "../../services/TMDBServices";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchMovieListThunk } from "../../redux/actions/movie.action";
 import MovieCard from "../movieCard/MovieCard";
 
 const MovieList = () => {
-	const [movies, setMovies] = useState([]);
-	const { fetchMovie } = TMDBServices();
-
-	const onMoviesLoaded = async (movies) => {
-		setMovies(movies);
-	};
+	const { movieList } = useSelector((state) => state);
+	const dispatch = useDispatch();
 
 	useEffect(() => {
-		fetchMovie().then(onMoviesLoaded);
+		dispatch(fetchMovieListThunk());
 	}, []);
 
 	return (
 		<ul className="movies">
-			{console.log(movies)}
-			{movies.map((movie) => (
+			{movieList.map((movie) => (
 				<MovieCard movie={movie} key={movie.id} />
 			))}
 		</ul>
