@@ -1,6 +1,6 @@
 const initialState = {
 	movieList: [],
-	selectedMovie: {},
+	selectedMovie: null,
 	favoriteList: [],
 };
 
@@ -9,7 +9,7 @@ const moviesReducer = (state = initialState, action) => {
 		case "FETCH_MOVIES":
 			return {
 				...state,
-				movieList: action.payload,
+				movieList: [...state.movieList, ...action.payload],
 			};
 		case "SELECT_MOVIE":
 			return {

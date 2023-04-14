@@ -1,8 +1,8 @@
 import TMDBServices from "../../services/TMDBServices";
 const { fetchMovie } = TMDBServices();
 
-export const fetchMovieListThunk = () => (dispatch) => {
-	fetchMovie("/discover/movie").then((res) =>
+export const fetchMovieListThunk = (page) => (dispatch) => {
+	fetchMovie(page).then((res) =>
 		dispatch({
 			type: "FETCH_MOVIES",
 			payload: res,
