@@ -1,15 +1,20 @@
 const initialState = {
 	movieList: [],
-	singleMovie: null,
+	selectedMovie: {},
 	favoriteList: [],
 };
 
 const moviesReducer = (state = initialState, action) => {
 	switch (action.type) {
-		case "FETCH_MOOVIES":
+		case "FETCH_MOVIES":
 			return {
 				...state,
 				movieList: action.payload,
+			};
+		case "SELECT_MOVIE":
+			return {
+				...state,
+				selectedMovie: action.payload,
 			};
 	}
 

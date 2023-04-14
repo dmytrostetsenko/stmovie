@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchMovieListThunk } from "../../redux/actions/movie.action";
 import MovieCard from "../movieCard/MovieCard";
+import { Grid } from "@mui/material";
 
 const MovieList = () => {
 	const { movieList } = useSelector((state) => state);
@@ -12,11 +13,13 @@ const MovieList = () => {
 	}, []);
 
 	return (
-		<ul className="movies">
+		<Grid container spacing={2} mt={2}>
 			{movieList.map((movie) => (
-				<MovieCard movie={movie} key={movie.id} />
+				<Grid item key={movie.id} xs={12} sm={6} md={3}>
+					<MovieCard movie={movie} />
+				</Grid>
 			))}
-		</ul>
+		</Grid>
 	);
 };
 

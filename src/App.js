@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import { ThemeProvider, CssBaseline } from "@mui/material";
+import { ThemeProvider, CssBaseline, Container } from "@mui/material";
 import { useAppTheme } from "./style/theme";
 import HomePage from "./pages/HomePage";
 import NotFound from "./pages/NotFound";
@@ -10,13 +10,15 @@ function App() {
 	return (
 		<ThemeProvider theme={theme}>
 			<CssBaseline />
-			<Header />
-			<main>
-				<Routes>
-					<Route path="/" element={<HomePage />} />
-					<Route path="*" element={<NotFound />} />
-				</Routes>
-			</main>
+			<Container>
+				<Header />
+				<main>
+					<Routes>
+						<Route path="/" element={<HomePage />} />
+						<Route path="*" element={<NotFound />} />
+					</Routes>
+				</main>
+			</Container>
 		</ThemeProvider>
 	);
 }
