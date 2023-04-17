@@ -2,7 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import { ThemeProvider, CssBaseline, Container } from "@mui/material";
 import { useAppTheme } from "./style/theme";
 import HomePage from "./pages/HomePage";
-import Movie from "./pages/Moovie";
+import Movie from "./pages/Movie";
 import NotFound from "./pages/NotFound";
 import Header from "./components/header/Header";
 
@@ -20,7 +20,6 @@ function App() {
 						<Route path="*" element={<NotFound />} />
 					</Routes>
 				</main>
-				{/* <Movie /> */}
 			</Container>
 		</ThemeProvider>
 	);

@@ -1,6 +1,6 @@
 const initialState = {
 	movieList: [],
-	selectedMovie: {},
+	selectedMovie: null,
 	favoriteList: [],
 	searchMovie: [],
 };
